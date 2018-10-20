@@ -1,5 +1,7 @@
 package examples.shapes;
 
+import java.awt.*;
+
 /**
  * Point
  *
@@ -54,6 +56,11 @@ public class Point extends AbstractShape {
     public void moveY(double deltaY) throws ShapeException {
         Validator.validateDouble(deltaY, "Invalid delta-y value");
         y += deltaY;
+    }
+
+    @Override
+    public void load(Graphics2D graphics) throws ShapeException {
+
     }
 
     @Override

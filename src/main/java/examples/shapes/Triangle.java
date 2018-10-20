@@ -1,6 +1,8 @@
 package examples.shapes;
 
 
+import java.awt.*;
+
 @SuppressWarnings("WeakerAccess")
 public class Triangle extends AbstractShape {
 
@@ -68,6 +70,11 @@ public class Triangle extends AbstractShape {
         vertice3.move(deltaX, deltaY);
     }
 
+
+    @Override
+    public void load(Graphics2D graphics) throws ShapeException {
+
+    }
 
     public double computeArea() {
         double s;

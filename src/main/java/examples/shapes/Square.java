@@ -1,5 +1,7 @@
 package examples.shapes;
 
+import java.awt.*;
+
 public class Square extends AbstractShape {
 
     private Rectangle r1;
@@ -50,6 +52,11 @@ public class Square extends AbstractShape {
         return r1.getvertice4();
     }
 
+
+    @Override
+    public void load(Graphics2D graphics) throws ShapeException {
+
+    }
 
     /**
      * @return The area of the Square.

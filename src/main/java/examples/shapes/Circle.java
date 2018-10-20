@@ -1,5 +1,7 @@
 package examples.shapes;
 
+import java.awt.*;
+
 /**
  * Circle
  *
@@ -72,6 +74,11 @@ public class Circle extends AbstractShape {
     public void scale(double scaleFactor) throws ShapeException {
         Validator.validatePositiveDouble(scaleFactor, "Invalid scale factor");
         radius *= scaleFactor;
+    }
+
+    @Override
+    public void load(Graphics2D graphics) throws ShapeException {
+
     }
 
     /**

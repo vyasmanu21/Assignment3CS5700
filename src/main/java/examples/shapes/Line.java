@@ -1,5 +1,7 @@
 package examples.shapes;
 
+import java.awt.*;
+
 /**
  *
  *  Line
@@ -55,6 +57,11 @@ public class Line extends AbstractShape {
      * @return  The second point
      */
     public Point getPoint2() { return point2; }
+
+    @Override
+    public void load(Graphics2D graphics) throws ShapeException {
+
+    }
 
     @Override
     public double computeArea() {

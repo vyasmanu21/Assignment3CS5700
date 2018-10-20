@@ -1,5 +1,7 @@
 package examples.shapes;
 
+import java.awt.*;
+
 public class Rectangle extends AbstractShape {
 
     private Point vertice1;
@@ -91,6 +93,11 @@ public class Rectangle extends AbstractShape {
 
     public double getwidth() { return line2.computeLength(); }
 
+
+    @Override
+    public void load(Graphics2D graphics) throws ShapeException {
+
+    }
 
     /**
      * @return  The area of the rectangle.

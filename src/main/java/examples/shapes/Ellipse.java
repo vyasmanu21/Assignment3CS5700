@@ -1,5 +1,7 @@
 package examples.shapes;
 
+import java.awt.*;
+
 public class Ellipse extends AbstractShape {
 
     private Point foci1;
@@ -62,6 +64,12 @@ public class Ellipse extends AbstractShape {
         foci1.move(deltaX, deltaY);
         foci2.move(deltaX, deltaY);
     }
+
+    @Override
+    public void load(Graphics2D graphics) throws ShapeException {
+
+    }
+
     public double computeArea()
 
     {
