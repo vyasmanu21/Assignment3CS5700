@@ -1,51 +1,45 @@
 import examples.shapes.*;
+import examples.shapes.Shape;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.*;
 import java.util.*;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class Composite extends Shape {
-    private List<Shape> shapes;
+public class Composite extends AbstractShape {
+    private List<AbstractShape> abstractShapes = new ArrayList<>();
 
 
-    public void add(Shape s) {
-        shapes.add(s);
+    public void add(AbstractShape s) {
+        abstractShapes.add(s);
     }
 
-    public void remove(Shape s) {
-        shapes.remove(s);
+    public void remove(AbstractShape s) {
+        abstractShapes.remove(s);
     }
 
     public void clear() {
-        shapes.clear();
+        abstractShapes.clear();
     }
 
-    public void move(double deltaX, double deltaY) {
+    public Shape deserialize(Stream stream) throws ShapeException {
+        return null;
+    }
 
-        try {
-            for (Shape shape : shapes) {
-
-                shape.move(deltaX, deltaY);
-
-            }
-        } catch (Exception e) {
-            System.out.println("Exception occurred");
+    @Override
+    public void load(Graphics2D graphics) throws ShapeException {
+        for (Shape s : abstractShapes) {
+            s.load(graphics);
         }
     }
 
-
-    public double computeArea() {
-        double sum = 0;
-        try {
-            for (Shape shape : shapes) {
-                sum += shape.computeArea();
-            }
-        } catch (Exception e) {
-            System.out.println("Exception occurred");
+    @Override
+    public double computeArea() throws ShapeException {
+        double totalArea = 0;
+        for (Shape s : abstractShapes) {
+            totalArea += s.computeArea();
         }
-    return sum;
+        return totalArea;
     }
-
 }
 

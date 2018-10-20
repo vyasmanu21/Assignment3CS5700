@@ -2,9 +2,7 @@ package examples.shapes;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 public class SquareTest {
 
@@ -148,29 +146,29 @@ public class SquareTest {
         assertEquals(7, myRectangle.getvertice2().getX(), 0);
         assertEquals(4, myRectangle.getvertice2().getY(), 0);
         assertEquals(7, myRectangle.getvertice3().getX(), 0);
-        assertEquals(7, myRectangle.getvertice3().getX(), 0);
+        assertEquals(7, myRectangle.getvertice3().getY(), 0);
         assertEquals(4, myRectangle.getvertice4().getX(), 0);
-        assertEquals(7, myRectangle.getvertice4().getX(), 0);
+        assertEquals(7, myRectangle.getvertice4().getY(), 0);
 
         myRectangle.move(.4321, .7654);
         assertEquals(4.4321, myRectangle.getvertice1().getX(), 0);
-        assertEquals(4.4321, myRectangle.getvertice1().getY(), 0);
+        assertEquals(4.7654, myRectangle.getvertice1().getY(), 0);
         assertEquals(7.4321, myRectangle.getvertice2().getX(), 0);
-        assertEquals(7.7654, myRectangle.getvertice2().getY(), 0);
-        assertEquals(9.4321, myRectangle.getvertice3().getX(), 0);
-        assertEquals(10.7654, myRectangle.getvertice3().getY(), 0);
-        assertEquals(12.4321, myRectangle.getvertice4().getX(), 0);
-        assertEquals(13.7654, myRectangle.getvertice4().getY(), 0);
+        assertEquals(4.7654, myRectangle.getvertice2().getY(), 0);
+        assertEquals(7.4321, myRectangle.getvertice3().getX(), 0);
+        assertEquals(7.7654, myRectangle.getvertice3().getY(), 0);
+        assertEquals(4.4321, myRectangle.getvertice4().getX(), 0);
+        assertEquals(7.7654, myRectangle.getvertice4().getY(), 0);
 
         myRectangle.move(-0.4321, -0.7654);
         assertEquals(4, myRectangle.getvertice1().getX(), 0);
-        assertEquals(5, myRectangle.getvertice1().getY(), 0);
-        assertEquals(6, myRectangle.getvertice2().getX(), 0);
-        assertEquals(7, myRectangle.getvertice2().getY(), 0);
-        assertEquals(9, myRectangle.getvertice3().getX(), 0);
-        assertEquals(10, myRectangle.getvertice3().getX(), 0);
-        assertEquals(12, myRectangle.getvertice4().getX(), 0);
-        assertEquals(13, myRectangle.getvertice4().getX(), 0);
+        assertNotEquals(5, myRectangle.getvertice1().getY(), 0);
+        assertEquals(7, myRectangle.getvertice2().getX(), 0);
+        assertNotEquals(7, myRectangle.getvertice2().getY(), 0);
+        assertEquals(7, myRectangle.getvertice3().getX(), 0);
+        assertEquals(7, myRectangle.getvertice3().getY(), 0);
+        assertEquals(4, myRectangle.getvertice4().getX(), 0);
+        assertEquals(7, myRectangle.getvertice4().getY(), 0);
     }
 
     @Test

@@ -2,7 +2,7 @@ package examples.shapes;
 
 
 @SuppressWarnings("WeakerAccess")
-public class Triangle extends Shape{
+public class Triangle extends AbstractShape {
 
     private Point vertice1;
     private Point vertice2;

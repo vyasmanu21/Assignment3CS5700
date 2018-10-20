@@ -1,6 +1,6 @@
 package examples.shapes;
 
-public class Ellipse extends Shape{
+public class Ellipse extends AbstractShape {
 
     private Point foci1;
     private Point foci2;

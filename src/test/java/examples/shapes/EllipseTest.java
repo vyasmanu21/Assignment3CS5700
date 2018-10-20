@@ -10,7 +10,7 @@ public class EllipseTest {
         Point center = new Point(4, 3.5);
         Point foci1 = new Point(2.5, 3.5);
         Point foci2 = new Point(5.5, 3.5);
-        Ellipse myEllipse = new Ellipse(center, foci1, foci2, 5, 3);
+        Ellipse myEllipse = new Ellipse(4, 3.5, 2.5, 3.5, 5.5, 3.5, 5, 3);
         assertSame(center, myEllipse.getCenter());
         assertSame(foci1, myEllipse.getFoci1());
         assertSame(foci2, myEllipse.getFoci2());

@@ -8,7 +8,7 @@ package examples.shapes;
  *
  */
 @SuppressWarnings("WeakerAccess")
-public class Line extends Shape{
+public class Line extends AbstractShape {
 
     private Point point1;
     private Point point2;

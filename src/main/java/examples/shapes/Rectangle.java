@@ -1,6 +1,6 @@
 package examples.shapes;
 
-public class Rectangle extends Shape{
+public class Rectangle extends AbstractShape {
 
     private Point vertice1;
     private Point vertice2;
@@ -37,7 +37,10 @@ public class Rectangle extends Shape{
         this.vertice2 = vertice2;
         this.vertice3 = vertice3;
         this.vertice4 = vertice4;
-
+        line1 = new Line(vertice1,vertice2);
+        line2 = new Line(vertice2,vertice3);
+        line3 = new Line(vertice3,vertice4);
+        line4 = new Line(vertice4,vertice1);
         if (line1.computeLength() < 0.00000001 || line2.computeLength() < 0.00000001 || line3.computeLength() < 0.00000001 || line4.computeLength() <0.00000001)
             throw new ShapeException("All edge must have a length > 0");
 

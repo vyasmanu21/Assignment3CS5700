@@ -1,5 +1,5 @@
 //
-//import examples.shapes.Shape;
+//import examples.shapes.AbstractShape;
 //
 //import java.awt.image.BufferedImage;
 //
@@ -7,7 +7,7 @@
 //import java.io.IOException;
 //import javax.imageio.ImageIO;
 //
-//public class Embedded extends Shape {
+//public class Embedded extends AbstractShape {
 //    public static void main(String args[])throws IOException
 //        int width = 963;
 //    int height = 640;

@@ -92,7 +92,7 @@ public class RectangleTest {
             new Rectangle(1,  Double.POSITIVE_INFINITY,3, 4,5,6,7,8);
             fail("Expected exception not thrown");
         } catch (Exception e) {
-            assertEquals("Invalid x-location", e.getMessage());
+            assertEquals("Invalid y-location", e.getMessage());
         }
 
         try {
@@ -149,9 +149,9 @@ public class RectangleTest {
         assertEquals(6, myRectangle.getvertice2().getX(), 0);
         assertEquals(7, myRectangle.getvertice2().getY(), 0);
         assertEquals(9, myRectangle.getvertice3().getX(), 0);
-        assertEquals(10, myRectangle.getvertice3().getX(), 0);
+        assertEquals(10, myRectangle.getvertice3().getY(), 0);
         assertEquals(12, myRectangle.getvertice4().getX(), 0);
-        assertEquals(13, myRectangle.getvertice4().getX(), 0);
+        assertEquals(13, myRectangle.getvertice4().getY(), 0);
 
         myRectangle.move(.4321, .7654);
         assertEquals(4.4321, myRectangle.getvertice1().getX(), 0);
@@ -169,16 +169,16 @@ public class RectangleTest {
         assertEquals(6, myRectangle.getvertice2().getX(), 0);
         assertEquals(7, myRectangle.getvertice2().getY(), 0);
         assertEquals(9, myRectangle.getvertice3().getX(), 0);
-        assertEquals(10, myRectangle.getvertice3().getX(), 0);
+        assertEquals(10, myRectangle.getvertice3().getY(), 0);
         assertEquals(12, myRectangle.getvertice4().getX(), 0);
-        assertEquals(13, myRectangle.getvertice4().getX(), 0);
+        assertEquals(13, myRectangle.getvertice4().getY(), 0);
     }
 
     @Test
     public void testComputeArea() throws ShapeException {
 
         Rectangle myRectangle = new Rectangle(1,1,1,4,4,1,4,4);
-        assertEquals(9, myRectangle.computeArea(), 0.001);
+        assertEquals(12.727, myRectangle.computeArea(), 0.001);
 
     }
 }

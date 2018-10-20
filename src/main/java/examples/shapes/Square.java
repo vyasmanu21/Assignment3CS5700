@@ -1,6 +1,6 @@
 package examples.shapes;
 
-public class Square extends Shape{
+public class Square extends AbstractShape {
 
     private Rectangle r1;
 

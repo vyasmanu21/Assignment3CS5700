@@ -6,7 +6,7 @@ package examples.shapes;
  * This class represents point objects that can be moved and copied
  */
 @SuppressWarnings("WeakerAccess")
-public class Point extends Shape{
+public class Point extends AbstractShape {
     private double x;
     private double y;
 
