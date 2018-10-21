@@ -18,14 +18,6 @@ public class SaveDetails {//Here we are using Flyweight Pattern
         this.lineColour = lineColour;
     }
 
-    public Color getFillColor() {
-        return fillColor;
-    }
-
-    public void setFillColor(Color fillColor) {
-        this.fillColor = fillColor;
-    }
-
     public float getLineWidth() {
         return lineWidth;
     }
@@ -34,12 +26,20 @@ public class SaveDetails {//Here we are using Flyweight Pattern
         this.lineWidth = lineWidth;
     }
 
-    public int getxPosition() {
+    public Color getFillColor() {
+        return fillColor;
+    }
+
+    public void setFillColor(Color fillColor) {
+        this.fillColor = fillColor;
+    }
+
+    public int getxAxis() {
         return xAxis;
     }
 
-    public void setxPosition(int xPosition) {
-        this.xAxis = xPosition;
+    public void setxAxis(int xAxis) {
+        this.xAxis = xAxis;
     }
 
     public int getyAxis() {
@@ -49,5 +49,4 @@ public class SaveDetails {//Here we are using Flyweight Pattern
     public void setyAxis(int yAxis) {
         this.yAxis = yAxis;
     }
-
 }
