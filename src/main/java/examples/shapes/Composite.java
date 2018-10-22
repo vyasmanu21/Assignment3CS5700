@@ -1,5 +1,4 @@
-import examples.shapes.*;
-import examples.shapes.Shape;
+package examples.shapes;
 
 import java.awt.*;
 import java.util.*;
@@ -8,8 +7,6 @@ import java.util.stream.Stream;
 
 public class Composite extends AbstractShape {
     private List<AbstractShape> abstractShapes = new ArrayList<>();
-
-
     public void add(AbstractShape s) {
         abstractShapes.add(s);
     }
@@ -20,10 +17,6 @@ public class Composite extends AbstractShape {
 
     public void clear() {
         abstractShapes.clear();
-    }
-
-    public Shape deserialize(Stream stream) throws ShapeException {
-        return null;
     }
 
     @Override

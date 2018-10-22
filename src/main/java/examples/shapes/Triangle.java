@@ -14,54 +14,59 @@ public class Triangle extends AbstractShape {
     private Line line3;
 
 
-
-    public Triangle(double x1, double y1, double x2, double y2,double x3,double y3) throws ShapeException {
+    public Triangle(double x1, double y1, double x2, double y2, double x3, double y3) throws ShapeException {
         vertice1 = new Point(x1, y1);
         vertice2 = new Point(x2, y2);
         vertice3 = new Point(x3, y3);
-        line1 = new Line(vertice1,vertice2);
-        line2 = new Line(vertice2,vertice3);
-        line3 = new Line(vertice3,vertice1);
+        line1 = new Line(vertice1, vertice2);
+        line2 = new Line(vertice2, vertice3);
+        line3 = new Line(vertice3, vertice1);
 
         if (line1.computeSlope() == line2.computeSlope())
             throw new ShapeException("All vertice cannot be in same line");
-        if (line1.computeLength()>line2.computeLength()+line3.computeLength())
+        if (line1.computeLength() > line2.computeLength() + line3.computeLength())
             throw new ShapeException("Lenght of edge cannot be greater than other two");
-        if (line2.computeLength()>line1.computeLength()+line3.computeLength())
+        if (line2.computeLength() > line1.computeLength() + line3.computeLength())
             throw new ShapeException("Lenght of edge cannot be greater than other two");
-        if (line3.computeLength()>line2.computeLength()+line1.computeLength())
+        if (line3.computeLength() > line2.computeLength() + line1.computeLength())
             throw new ShapeException("Lenght of edge cannot be greater than other two");
     }
 
 
-    public Triangle(Point vertice1, Point vertice2,Point vertice3) throws ShapeException {
-        if (vertice1==null || vertice2==null || vertice3==null)
+    public Triangle(Point vertice1, Point vertice2, Point vertice3) throws ShapeException {
+        if (vertice1 == null || vertice2 == null || vertice3 == null)
             throw new ShapeException("Invalid Point");
 
         this.vertice1 = vertice1;
         this.vertice2 = vertice2;
         this.vertice3 = vertice3;
-        line1 = new Line(vertice1,vertice2);
-        line2 = new Line(vertice2,vertice3);
-        line3 = new Line(vertice3,vertice1);
+        line1 = new Line(vertice1, vertice2);
+        line2 = new Line(vertice2, vertice3);
+        line3 = new Line(vertice3, vertice1);
 
 
         if (line1.computeSlope() == line2.computeSlope())
             throw new ShapeException("All vertice cannot be in same line");
-        if (line1.computeLength()>line2.computeLength()+line3.computeLength())
+        if (line1.computeLength() > line2.computeLength() + line3.computeLength())
             throw new ShapeException("Lenght of edge cannot be greater than other two");
-        if (line2.computeLength()>line1.computeLength()+line3.computeLength())
+        if (line2.computeLength() > line1.computeLength() + line3.computeLength())
             throw new ShapeException("Lenght of edge cannot be greater than other two");
-        if (line3.computeLength()>line2.computeLength()+line1.computeLength())
+        if (line3.computeLength() > line2.computeLength() + line1.computeLength())
             throw new ShapeException("Lenght of edge cannot be greater than other two");
     }
 
 
-    public Point getPoint1() { return vertice1; }
+    public Point getPoint1() {
+        return vertice1;
+    }
 
-    public Point getPoint2() { return vertice2; }
+    public Point getPoint2() {
+        return vertice2;
+    }
 
-    public Point getPoint3() { return vertice3; }
+    public Point getPoint3() {
+        return vertice3;
+    }
 
 
     public void move(double deltaX, double deltaY) throws ShapeException {
@@ -72,25 +77,43 @@ public class Triangle extends AbstractShape {
 
 
     @Override
-    public void load(Graphics2D graphics) throws ShapeException {
-
+    public void load(Graphics2D g2D) throws ShapeException {
+        int x = (int) vertice1.getX();
+        int y = (int) vertice1.getY();
+        int xAxisPoints[] = {(int) vertice1.getX(), (int) vertice2.getX(), (int) vertice3.getX()};
+        int yAxisPoints[] = {(int) vertice1.getY(), (int) vertice2.getY(), (int) vertice3.getY()};
+        if (saveDetails == null) {
+            g2D.translate(x, y);
+            g2D.setColor(Color.white);
+            g2D.drawPolygon(xAxisPoints, yAxisPoints, 3);
+            g2D.translate(-x, -y);
+            return;
+        }
+        g2D.translate(saveDetails.getxAxis(), saveDetails.getyAxis());
+        g2D.setColor(saveDetails.getLineColour());
+        g2D.drawPolygon(xAxisPoints, yAxisPoints, 3);
+        if (saveDetails.getFillColor() != null) {
+            g2D.setColor(saveDetails.getFillColor());
+            g2D.fillPolygon(xAxisPoints, yAxisPoints, 3);
+        }
+        g2D.translate(-saveDetails.getxAxis(), -saveDetails.getyAxis());
     }
 
     public double computeArea() {
         double s;
-        s = getperimeter()/2;
-        return Math.sqrt(s * (s-line1.computeLength()) * (s-line2.computeLength()) * (s-line3.computeLength()));
+        s = getperimeter() / 2;
+        return Math.sqrt(s * (s - line1.computeLength()) * (s - line2.computeLength()) * (s - line3.computeLength()));
     }
 
-        public double getperimeter(){
+    public double getperimeter() {
         double perimeter;
-            perimeter = line1.computeLength()+line2.computeLength()+line3.computeLength();
-            return perimeter;
-        }
+        perimeter = line1.computeLength() + line2.computeLength() + line3.computeLength();
+        return perimeter;
+    }
 
     public String toString() {
-        return "Triangle,"+String.valueOf(vertice1.getX())+","+String.valueOf(vertice1.getY())+","+String.valueOf(vertice2.getX()+","+String.valueOf(vertice2.getY())+","+String.valueOf(vertice3.getX())+","+String.valueOf(vertice3.getY()));
+        return "Triangle," + String.valueOf(vertice1.getX()) + "," + String.valueOf(vertice1.getY()) + "," + String.valueOf(vertice2.getX() + "," + String.valueOf(vertice2.getY()) + "," + String.valueOf(vertice3.getX()) + "," + String.valueOf(vertice3.getY()));
     }
-        
- }
+
+}
 

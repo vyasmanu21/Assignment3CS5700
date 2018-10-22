@@ -126,6 +126,7 @@ public class Rectangle extends AbstractShape {
             g2D.setColor(saveDetails.getFillColor());
             g2D.fillRect((int) vertice1.getX(), (int) vertice1.getY(), (int) getwidth(), (int) getlength());
         }
+        g2D.translate(-saveDetails.getxAxis(), -saveDetails.getyAxis());
     }
 
 

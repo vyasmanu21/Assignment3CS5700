@@ -1,5 +1,7 @@
 package examples.shapes;
 
+import java.util.Base64;
+
 public class ShapeFactory {
     public static Shape create(String shapeDetails) {
         String[] splits = shapeDetails.split(",");
@@ -60,6 +62,12 @@ public class ShapeFactory {
                     double r1 = Double.parseDouble(splits[6]);
                     double r2 = Double.parseDouble(splits[6]);
                     shape = new Ellipse(x, y, x1, y1, x2, y2, r1, r2);
+                    break;
+                }
+                case "EmbeddedPicture": {
+                    String embeddedPictureBytes = splits[1];
+                    byte[] byteArray = Base64.getDecoder().decode(embeddedPictureBytes);
+                    shape = new EmbeddedPicture(byteArray);
                     break;
                 }
                 default:

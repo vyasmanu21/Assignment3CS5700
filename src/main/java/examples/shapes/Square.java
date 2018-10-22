@@ -35,9 +35,43 @@ public class Square extends AbstractShape {
         r1.getvertice4().move(deltaX, deltaY);
     }
 
-    @Override
-    public void load(Graphics2D graphics) {
 
+    public Point getvertice1() {
+        return r1.getvertice1();
+    }
+
+    public Point getvertice2() {
+        return r1.getvertice2();
+    }
+
+    public Point getvertice3() {
+        return r1.getvertice3();
+    }
+
+    public Point getvertice4() {
+        return r1.getvertice4();
+    }
+
+
+    @Override
+    public void load(Graphics2D g2D) {
+        int xAxis = (int) r1.getvertice1().getX();
+        int yAxis = (int) r1.getvertice1().getY();
+
+        if (saveDetails == null) {
+            g2D.translate(xAxis, yAxis);
+            g2D.setColor(Color.BLUE);
+            g2D.drawRect(xAxis, yAxis, (int) r1.getwidth(), (int) r1.getlength());
+            g2D.translate(-xAxis, -yAxis);
+            return;
+        }
+        g2D.translate(saveDetails.getxAxis(), saveDetails.getyAxis());
+        g2D.setColor(saveDetails.getLineColour());
+        g2D.drawRect((int) r1.getvertice1().getX(), (int) r1.getvertice1().getY(), (int) r1.getwidth(), (int) r1.getlength());
+        if (saveDetails.getFillColor() != null) {
+            g2D.setColor(saveDetails.getFillColor());
+            g2D.fillRect((int) r1.getvertice1().getX(), (int) r1.getvertice1().getY(), (int) r1.getwidth(), (int) r1.getlength());
+        }
     }
 
     /**

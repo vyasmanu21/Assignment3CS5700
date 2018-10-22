@@ -28,11 +28,11 @@ public class Ellipse extends AbstractShape {
         throw new ShapeException("sum of focal distances can not be more than length of major axis");
 
     }
-    public Ellipse(Point center, Point foci1, Point foci2) throws ShapeException
-    {
-        if(center == null)
+
+    public Ellipse(Point center, Point foci1, Point foci2) throws ShapeException {
+        if (center == null)
             throw new ShapeException("invalid center point");
-        if(foci1 == null || foci2 == null)
+        if (foci1 == null || foci2 == null)
             throw new ShapeException("invalid focal Points");
         this.center = center;
         this.foci1 = foci1;
@@ -66,17 +66,34 @@ public class Ellipse extends AbstractShape {
     }
 
     @Override
-    public void load(Graphics2D graphics) throws ShapeException {
+    public void load(Graphics2D g2D) {
+        int xAxis = (int) Math.round(center.getX() - radius1);
+        int yAxis = (int) Math.round(center.getY() - radius1);
+        int diameter1 = (int) Math.round(radius1 * 2);
+        int diameter2 = (int) Math.round(radius1 * 2);
+        if (saveDetails == null) {
+            createAndFill(g2D, xAxis, yAxis, diameter1, diameter2, Color.BLUE);
+            return;
 
+        }
+        createAndFill(g2D, saveDetails.getxAxis(), saveDetails.getyAxis(), diameter1, diameter2,
+                saveDetails.getFillColor() != null ? saveDetails.getFillColor() : saveDetails.getLineColour());
     }
 
-    public double computeArea()
+    private void createAndFill(Graphics2D g2D, int xAxis, int yAxis, int diameter1, int diameter2, Color c) {
+        g2D.translate(xAxis, yAxis);
+        g2D.setColor(c);
+        g2D.drawOval(xAxis, yAxis, diameter1, diameter2);
+        g2D.fillOval(0, 0, diameter1, diameter2);
+        g2D.translate(-xAxis, -yAxis);
+    }
 
-    {
+    public double computeArea() {
         return Math.PI * radius1 * radius2;
 
     }
+
     public String toString() {
-        return "Ellipse,"+String.valueOf(foci1.getX())+","+String.valueOf(foci1.getY())+","+String.valueOf(foci2.getX()+","+String.valueOf(foci2.getY())+","+String.valueOf(fociLength1)+","+String.valueOf(fociLength2));
+        return "Ellipse," + String.valueOf(foci1.getX()) + "," + String.valueOf(foci1.getY()) + "," + String.valueOf(foci2.getX() + "," + String.valueOf(foci2.getY()) + "," + String.valueOf(fociLength1) + "," + String.valueOf(fociLength2));
     }
 }
