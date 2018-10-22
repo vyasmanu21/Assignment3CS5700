@@ -30,20 +30,18 @@ public class Runner {
             Line line = new Line(new Point(0, 1), new Point(1, 1));
             shapes.add(line);
 
-            EmbeddedPicture ePicture = new EmbeddedPicture("usu`.jpg");
+            EmbeddedPicture ePicture = new EmbeddedPicture("usu.jpg");
             shapes.add(ePicture);
-
-            testRender();
-
+            writeAllShapesToFile(shapes, "shapes.txt");
+            List<Shape> allShapes = readShapesFromFile("shapes.txt");
+            for (Shape s : allShapes) {
+                System.out.println(s);
+            }
+            renderEmbeddedImage();
+            System.out.println("Done");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        writeAllShapesToFile(shapes, "shapes.txt");
-        List<Shape> allShapes = readShapesFromFile("shapes.txt");
-        for (Shape s : allShapes) {
-            System.out.println(s);
-        }
-        System.out.println("Done");
     }
 
     public static void writeAllShapesToFile(List<Shape> shapeList, String shapeFileName) {
@@ -63,7 +61,6 @@ public class Runner {
             }
             outputStream.flush();
             outputStream.close();
-            outputStream = null;
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -94,51 +91,45 @@ public class Runner {
         return shapeList;
     }
 
-    public static void testRender() throws ShapeException, IOException {
-        Circle circle = new Circle(30, 30, 10);
-        Rectangle rectangle = new Rectangle(new Point(50, 50), new Point(20, 50), new Point(50, 20), new Point(20, 20));
-        Triangle triangle = new Triangle(new Point(0, 0), new Point(10, 0), new Point(0, 10));
-        Line line = new Line(new Point(0, 30), new Point(30, 30));
+    public static void renderEmbeddedImage() throws ShapeException, IOException {
+        Composite composite = new Composite();
 
+        Rectangle rectangle = new Rectangle(new Point(50, 50), new Point(20, 50), new Point(50, 20), new Point(20, 20));
         SaveDetails sd1 = new SaveDetails();
         sd1.setLineColour(Color.BLACK);
         sd1.setFillColor(Color.WHITE);
+        rectangle.setSaveDetails(sd1);
+        composite.add(rectangle);
 
+        Circle circle = new Circle(30, 30, 10);
         SaveDetails sd2 = new SaveDetails();
         sd2.setLineColour(Color.WHITE);
         sd2.setFillColor(Color.RED);
         sd2.setxAxis(30);
         sd2.setyAxis(60);
-
-        SaveDetails sd3 = new SaveDetails();
-        sd3.setLineColour(Color.BLACK);
-        sd3.setFillColor(Color.BLUE);
-
-        SaveDetails sd4 = new SaveDetails();
-        sd4.setLineColour(Color.BLUE);
-        sd4.setFillColor(Color.YELLOW);
-
-        SaveDetails sd5 = new SaveDetails();
-        sd5.setxAxis(0);
-        sd5.setyAxis(100);
-
-        Composite composite = new Composite();
-        rectangle.setSaveDetails(sd1);
-        composite.add(rectangle);
-
         circle.setSaveDetails(sd2);
         composite.add(circle);
 
+        Triangle triangle = new Triangle(new Point(0, 0), new Point(10, 0), new Point(0, 10));
+        SaveDetails sd3 = new SaveDetails();
+        sd3.setLineColour(Color.WHITE);
+        sd3.setFillColor(Color.BLUE);
         triangle.setSaveDetails(sd3);
         composite.add(triangle);
 
+        Line line = new Line(new Point(0, 30), new Point(30, 30));
+        SaveDetails sd4 = new SaveDetails();
+        sd4.setLineColour(Color.YELLOW);
         line.setSaveDetails(sd4);
         composite.add(line);
 
-        BufferedImage bImg = new BufferedImage(500, 500, BufferedImage.TYPE_INT_RGB);
+        BufferedImage bImg = new BufferedImage(600, 600, BufferedImage.TYPE_INT_RGB);
         Graphics2D g2D = bImg.createGraphics();
 
         EmbeddedPicture ePicture = new EmbeddedPicture("./usu.jpg");
+        SaveDetails sd5 = new SaveDetails();
+        sd5.setxAxis(0);
+        sd5.setyAxis(100);
         ePicture.setSaveDetails(sd5);
         ePicture.load(g2D);
         composite.add(ePicture);

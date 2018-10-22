@@ -11,6 +11,7 @@ public class Composite extends AbstractShape {
         abstractShapes.add(s);
     }
 
+    /*
     public void remove(AbstractShape s) {
         abstractShapes.remove(s);
     }
@@ -18,6 +19,7 @@ public class Composite extends AbstractShape {
     public void clear() {
         abstractShapes.clear();
     }
+    */
 
     @Override
     public void load(Graphics2D graphics) throws ShapeException {

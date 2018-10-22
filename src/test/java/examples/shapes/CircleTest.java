@@ -12,11 +12,13 @@ public class CircleTest {
         Circle myCircle = new Circle(center, 5);
         assertSame(center, myCircle.getCenter());
         assertEquals(5, myCircle.getRadius(), 0);
-
+        assertEquals("Circle,1.0,2.0,5.0", myCircle.toString());
         myCircle = new Circle(1.3, 2.6, 2.5);
         assertEquals(1.3, myCircle.getCenter().getX(), 0);
         assertEquals(2.6, myCircle.getCenter().getY(), 0);
         assertEquals(2.5, myCircle.getRadius(), 0);
+        assertEquals("Circle,1.3,2.6,2.5", myCircle.toString());
+
     }
 
     @Test
@@ -155,7 +157,6 @@ public class CircleTest {
             fail("Expected exception not thrown");
         } catch (ShapeException e) {
             assertEquals("Invalid delta-x value", e.getMessage());
-            // ignore
         }
 
         try {
@@ -240,36 +241,14 @@ public class CircleTest {
         assertEquals(0, myCircle.computeArea(), 0);
 
     }
-//    @Test
-//    public void save() throws ShapeException {
-//        try {
-//            Circle myCircle = new Circle(2, 2, 1.5);
-//            myCircle.save("circle.txt", myCircle);
-//        }catch (Exception e)
-//        {
-//            e.printStackTrace();
-//        }
-//    }
-//    @Test
-//    public void testRenderOfCircleWithNoOffset() throws ShapeException, IOException {
-//        // Setup
-//        Circle circle = new Circle(30, 40, 50);
-//        BufferedImage bImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
-//        Graphics2D graphics = bImg.createGraphics();
-//        graphics.setColor(Color.WHITE);
-//        graphics.fillRect(0, 0, 100, 100);
-//        graphics.setColor(Color.BLACK);
-//
-//        // Stimulus
-//        circle.render(graphics,0,0);
-//
-//        // Write observed results to a file so it can be manual compared
-//        assertTrue(ImageIO.write(bImg, "png", new File("output/circle2.png")));
-//
-//        // To check predicted results against observed predicted results, view circle1.png
-//        // as see if there is a circle centered on (30,40) and with a radius of 50.  The
-//        // Circle should appear to hanging off the left hand side of the image (by 20 pixels)
-//        // and off the top (by 10 pixels).
-//    }
 
+    @Test
+    public void testDeserialize(){
+        String string = "Circle,0.0,1.0,5.0";
+        Circle circle = (Circle) ShapeFactory.create(string);
+        assertNotNull(circle);
+        assertEquals(circle.getCenter().getX() , 0, 0);
+        assertEquals(circle.getCenter().getY() , 1, 0);
+        assertEquals(circle.getRadius() , 5, 0);
+    }
 }

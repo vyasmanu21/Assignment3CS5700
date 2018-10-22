@@ -3,13 +3,19 @@ package examples.shapes;
 import java.awt.*;
 
 public class Ellipse extends AbstractShape {
-
     private Point foci1;
     private Point foci2;
     private double radius1;
     private double radius2;
     private Point center;
 
+    /**
+     * @param x       of the center
+     * @param y       of the center
+     * @param radius1 of the ellipse
+     * @param radius2 of the ellipse
+     * @throws ShapeException
+     */
     public Ellipse(double x, double y, double radius1, double radius2) throws ShapeException {
         Validator.validateDouble(x, "Invalid center");
         Validator.validateDouble(y, "Invalid center");
@@ -23,6 +29,12 @@ public class Ellipse extends AbstractShape {
 
     }
 
+    /**
+     * @param center of the ellipse
+     * @param foci1
+     * @param foci2
+     * @throws ShapeException
+     */
     public Ellipse(Point center, Point foci1, Point foci2) throws ShapeException {
         if (center == null)
             throw new ShapeException("invalid center point");
@@ -33,22 +45,53 @@ public class Ellipse extends AbstractShape {
         this.foci2 = foci2;
     }
 
+    /**
+     * @return
+     */
     public Point getFoci1() {
         return foci1;
     }
 
+    /**
+     * @return
+     */
     public Point getFoci2() {
         return foci2;
     }
 
+    /**
+     * @return
+     */
     public Point getCenter() {
         return center;
     }
 
+    /**
+     * Get the radius 1 of the ellipse
+     *
+     * @return
+     */
+    public double getRadius1() {
+        return radius1;
+    }
+
+    /**
+     * Get the radius 2 of the ellipse
+     *
+     * @return
+     */
+    public double getRadius2() {
+        return radius2;
+    }
+
+    /**
+     * @param deltaX
+     * @param deltaY
+     * @throws ShapeException
+     */
     public void move(double deltaX, double deltaY) throws ShapeException {
-        center.move(deltaX, deltaY);
-        foci1.move(deltaX, deltaY);
-        foci2.move(deltaX, deltaY);
+        center.moveX(deltaX);
+        center.moveY(deltaY);
     }
 
     @Override
@@ -74,11 +117,22 @@ public class Ellipse extends AbstractShape {
         g2D.translate(-xAxis, -yAxis);
     }
 
+    /**
+     * The area of the ellipse
+     *
+     * @return
+     */
     public double computeArea() {
         return Math.PI * radius1 * radius2;
 
     }
 
+    /**
+     * The string interpretation of the ellipse in the form "Ellipse,<center x-axis></center>,<center y-axis></center>,<radius1></radius1>,<radius2
+     * "
+     *
+     * @return
+     */
     public String toString() {
         return "Ellipse," + String.valueOf(center.getX()) + "," + String.valueOf(center.getY()) + "," + radius1 + "," + radius2;
     }

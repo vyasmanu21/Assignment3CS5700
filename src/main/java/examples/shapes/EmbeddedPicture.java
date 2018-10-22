@@ -28,7 +28,7 @@ public class EmbeddedPicture extends AbstractShape {
     }
 
     @Override
-    public void load(Graphics2D g2D) throws ShapeException {
+    public void load(Graphics2D g2D) {
         if (saveDetails == null) {
             g2D.drawImage(bufferedImg, 0, 0, bufferedImg.getWidth(), bufferedImg.getHeight(), Color.BLUE, null);
             return;
@@ -61,7 +61,7 @@ public class EmbeddedPicture extends AbstractShape {
     }
 
     @Override
-    public double computeArea() throws ShapeException {
+    public double computeArea() {
         return 0;
     }
 }

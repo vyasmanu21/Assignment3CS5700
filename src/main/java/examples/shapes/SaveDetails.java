@@ -2,7 +2,10 @@ package examples.shapes;
 
 import java.awt.*;
 
-public class SaveDetails {//Here we are using Flyweight Pattern
+/**
+ * Here we are using Flyweight Pattern
+ */
+public class SaveDetails {
 
     Color lineColour = Color.BLUE;
     float lineWidth = 2.0f;
