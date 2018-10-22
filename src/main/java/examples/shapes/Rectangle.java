@@ -129,8 +129,6 @@ public class Rectangle extends AbstractShape {
         g2D.translate(-saveDetails.getxAxis(), -saveDetails.getyAxis());
     }
 
-
-
     /**
      * @return The area of the rectangle.
      */

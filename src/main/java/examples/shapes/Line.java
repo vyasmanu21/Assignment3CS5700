@@ -35,7 +35,7 @@ public class Line extends AbstractShape {
      * @param point2 The second point -- must not b e null
      * @throws ShapeException Exception throw if any parameter is invalid
      */
-    public Line(Point point1, Point point2) throws ShapeException {
+    public  Line(Point point1, Point point2) throws ShapeException {
         if (point1 == null || point2 == null)
             throw new ShapeException("Invalid Point");
 

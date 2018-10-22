@@ -36,6 +36,18 @@ public class ShapeFactory {
                     shape = new Rectangle(x1, y1, x2, y2, x3, y3, x4, y4);
                     break;
                 }
+                case "Square": {
+                    double x1 = Double.parseDouble(splits[1]);
+                    double y1 = Double.parseDouble(splits[2]);
+                    double x2 = Double.parseDouble(splits[3]);
+                    double y2 = Double.parseDouble(splits[4]);
+                    double x3 = Double.parseDouble(splits[5]);
+                    double y3 = Double.parseDouble(splits[6]);
+                    double x4 = Double.parseDouble(splits[7]);
+                    double y4 = Double.parseDouble(splits[8]);
+                    shape = new Square(x1, y1, x2, y2, x3, y3, x4, y4);
+                    break;
+                }
                 case "Point": {
                     double x = Double.parseDouble(splits[1]);
                     double y = Double.parseDouble(splits[2]);
@@ -55,13 +67,9 @@ public class ShapeFactory {
                 case "Ellipse": {
                     double x = Double.parseDouble(splits[1]);
                     double y = Double.parseDouble(splits[2]);
-                    double x1 = Double.parseDouble(splits[3]);
-                    double y1 = Double.parseDouble(splits[4]);
-                    double x2 = Double.parseDouble(splits[5]);
-                    double y2 = Double.parseDouble(splits[6]);
-                    double r1 = Double.parseDouble(splits[6]);
-                    double r2 = Double.parseDouble(splits[6]);
-                    shape = new Ellipse(x, y, x1, y1, x2, y2, r1, r2);
+                    double r1 = Double.parseDouble(splits[3]);
+                    double r2 = Double.parseDouble(splits[4]);
+                    shape = new Ellipse(x, y, r1, r2);
                     break;
                 }
                 case "EmbeddedPicture": {

@@ -15,9 +15,8 @@ public class Square extends AbstractShape {
     }
 
     public Square(Point vertice1, Point vertice2, Point vertice3, Point vertice4) throws ShapeException {
-
         r1 = new Rectangle(vertice1, vertice2, vertice3, vertice4);
-        if (!(r1.getlength() == r1.getwidth()))
+        if (r1.getlength() != r1.getwidth())
             throw new ShapeException("All side must be equal");
     }
 
@@ -34,24 +33,6 @@ public class Square extends AbstractShape {
         r1.getvertice3().move(deltaX, deltaY);
         r1.getvertice4().move(deltaX, deltaY);
     }
-
-
-    public Point getvertice1() {
-        return r1.getvertice1();
-    }
-
-    public Point getvertice2() {
-        return r1.getvertice2();
-    }
-
-    public Point getvertice3() {
-        return r1.getvertice3();
-    }
-
-    public Point getvertice4() {
-        return r1.getvertice4();
-    }
-
 
     @Override
     public void load(Graphics2D g2D) {
@@ -84,7 +65,10 @@ public class Square extends AbstractShape {
     }
 
     public String toString() {
-        return "Square," + String.valueOf(r1.getvertice1()) + "," + String.valueOf(r1.getvertice2()) + "," + String.valueOf(r1.getvertice3() + "," + String.valueOf(r1.getvertice4()));
+        return "Square," + String.valueOf(r1.getvertice1().getX()) + "," + String.valueOf(r1.getvertice1().getY()) + "," +
+                String.valueOf(r1.getvertice2().getX()) + "," + String.valueOf(r1.getvertice2().getY()) + "," +
+                String.valueOf(r1.getvertice3().getX()) + "," + String.valueOf(r1.getvertice3().getY()) + "," +
+                String.valueOf(r1.getvertice4().getX()) + "," + String.valueOf(r1.getvertice3().getY());
     }
 }
 
